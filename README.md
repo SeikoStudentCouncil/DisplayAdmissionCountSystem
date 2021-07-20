@@ -1,6 +1,6 @@
 # DisplayAdmissionCount
 
-## ビルド
+## Build
 
 ```bash
 # install dependencies
@@ -16,10 +16,4 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
-
-## 仕様説明
-
-### 目的
-展示団体に入る人を監視し入場時間や室内にいる人数をもに制限する。
-
 
