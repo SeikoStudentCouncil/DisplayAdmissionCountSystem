@@ -8,7 +8,7 @@
     </div>
     <div class="main">
       <div v-if="showCapture" class="capture-qr-content">
-        <qrcode-stream class="capture-qr-screen" @v-if="isCapture && selectedDisplay != ''" @decode="onDecode" @init="onInit" />
+        <qrcode-stream class="capture-qr-screen" v-if="isCapture && selectedDisplay != ''" @decode="onDecode" @init="onInit" />
       </div>
       <div v-else class="capture-result">
         <div class="capture-result-innner">
