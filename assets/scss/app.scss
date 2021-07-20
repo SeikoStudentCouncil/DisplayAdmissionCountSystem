@@ -15,12 +15,29 @@ body, div {
             margin-left: 3vw;
             font-size: 2em;
             display: inline-block;
+            font-weight: 100;
+            line-height: 60px;
+            opacity: 0.7;
         }
 
         .display-select {
             float: right;
+            height: 40px;
+            margin-top: 10px;
             margin-right: 3vw;
             display: inline-block;
+        }
+
+        .mode {
+            float: right;
+            font-size: 1.3em;
+            display: inline-block;
+            font-weight: 100;
+            line-height: 60px;
+            height: 100%;
+            width: auto;
+            margin-right: 3vw;
+            opacity: 0.5;
         }
 
     }
@@ -45,6 +62,11 @@ body, div {
                 padding: 40px;
                 background: #FFFFFF;
                 border-radius: 20px;
+                border: solid #F0142F 5px;
+
+                &.in {
+                    border: solid #21d59b 5px;
+                }
             }
         }
 

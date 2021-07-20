@@ -5,10 +5,13 @@
       <select class="display-select" v-model="selectedDisplay">
         <option v-for="name in Object.keys(displayList)" :key="name">{{ name }}</option>
       </select>
+      <div class="mode">
+        {{ (isInType == "in")? "入場" : "退場" }}
+      </div>
     </div>
     <div class="main">
       <div v-if="showCapture" class="capture-qr-content">
-        <qrcode-stream class="capture-qr-screen" v-if="isCapture && selectedDisplay != ''" @decode="onDecode" @init="onInit" />
+        <qrcode-stream :class="{ 'capture-qr-screen': true, 'in': isInType }" v-if="isCapture && selectedDisplay != ''" @decode="onDecode" @init="onInit" />
       </div>
       <div v-else class="capture-result">
         <div class="capture-result-innner">
@@ -38,10 +41,13 @@ export default Vue.extend({
       resultMes: "",
       isOK: false,
       displayList: {'生物部': 'Dx01', '地歴部': 'Dx02', 'ジョージ研': 'Dx03', 'リア盤': 'Dx04', 'ボドゲ': 'Dx05', 'コーヒーカップ': 'Dx06', 'ボルぽこ': 'Dx07', 'ぎゃんぶる': 'Dx08', '地天部': 'Dx09', 'ジョニー': 'Dx10', '技術展示': 'Dx11', 'ディズニー': 'Dx12', 'エース': 'Dx13', '魔女卓': 'Dx14', '古本市': 'Dx15', '聖光道場': 'Dx16', 'ごと研': 'Dx17', '数研': 'Dx18', '英語劇': 'Dx19', '交研': 'Dx20', '宇宙': 'Dx21', 'プロ研': 'Dx22', 'アイロジ': 'Dx23', 'トリハ': 'Dx24', '喫茶': 'Dx25', 'クイ研': 'Dx26', '物科部': 'Dx27', '文芸': 'Dx28', 'ポケセン': 'Dx29', '美術部': 'Dx30', 'コン部': 'Dx31', '駅弁': 'Dx32', 'かるた': 'Dx33', 'ぶいえいす': 'Dx34'},
-      selectedDisplay: ''
+      selectedDisplay: '',
+      isInType: false
     }
   },
-  mounted() {},
+  mounted() {
+    this.isInType = (this.$route.query.type == "in")
+  },
   methods: {
     onDecode (result) {
       this.result = result
@@ -63,6 +69,7 @@ export default Vue.extend({
         this.showCapture = false
         setTimeout(() => {
           this.showCapture = true
+          this.isCapture = true
         }, 4000)
       })
     },
